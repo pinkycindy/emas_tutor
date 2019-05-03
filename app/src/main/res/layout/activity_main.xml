@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
+        android:background="@color/darkyellow"
         app:itemIconTint="@drawable/state_navigation"
         app:itemTextColor="@drawable/state_navigation"
         app:menu="@menu/naviagtion_menu" />

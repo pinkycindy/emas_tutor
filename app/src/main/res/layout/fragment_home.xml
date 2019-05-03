@@ -1,16 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
 
 
-        <TextView
-            android:id="@+id/tv_home"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cloud"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="WELCOME BACK!"/>
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#bbb"/>
+
+        <ImageView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/home"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:src="@drawable/conten"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
+                    android:background="#309bec">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_fingerprint"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Attendances"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
+                    android:background="#309bec">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_history"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="History"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
+                    android:background="#309bec">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_multiline_chart"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Graphic"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
+                    android:background="#309bec">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_map"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Spots"
+                            android:textColor="#FFF"
+                            android:textSize="18dp"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+
+        </LinearLayout>
 
 
 

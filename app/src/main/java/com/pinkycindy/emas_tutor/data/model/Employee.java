@@ -6,9 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Employee  implements Parcelable {
+public class Employee implements Parcelable {
 
 	@SerializedName("birthday")
 	private String birthday;
@@ -28,6 +27,9 @@ public class Employee  implements Parcelable {
 	@SerializedName("created_at")
 	private String createdAt;
 
+	@SerializedName("classroom")
+	private ArrayList<ClassroomItem> classroom;
+
 	@SerializedName("avatar")
 	private String avatar;
 
@@ -35,13 +37,13 @@ public class Employee  implements Parcelable {
 	private int kecamatanId;
 
 	@SerializedName("kabupaten")
-	private List<KabupatenItem> kabupaten;
+	private ArrayList<KabupatenItem> kabupaten;
 
 	@SerializedName("kelurahan")
-	private List<KelurahanItem> kelurahan;
+	private ArrayList<KelurahanItem> kelurahan;
 
 	@SerializedName("propinsi")
-	private List<PropinsiItem> propinsi;
+	private ArrayList<PropinsiItem> propinsi;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -62,19 +64,20 @@ public class Employee  implements Parcelable {
 	private String name;
 
 	@SerializedName("kecamatan")
-	private List<KecamatanItem> kecamatan;
+	private ArrayList<KecamatanItem> kecamatan;
 
 	@SerializedName("id")
 	private int id;
-
-	@SerializedName("classsroom")
-	private List<ClassroomItem> classsroom;
 
 	@SerializedName("email")
 	private String email;
 
 	@SerializedName("username")
 	private String username;
+
+	public static Creator<Employee> getCREATOR() {
+		return CREATOR;
+	}
 
 	public String getBirthday() {
 		return birthday;
@@ -124,6 +127,14 @@ public class Employee  implements Parcelable {
 		this.createdAt = createdAt;
 	}
 
+	public ArrayList<ClassroomItem> getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(ArrayList<ClassroomItem> classroom) {
+		this.classroom = classroom;
+	}
+
 	public String getAvatar() {
 		return avatar;
 	}
@@ -140,27 +151,27 @@ public class Employee  implements Parcelable {
 		this.kecamatanId = kecamatanId;
 	}
 
-	public List<KabupatenItem> getKabupaten() {
+	public ArrayList<KabupatenItem> getKabupaten() {
 		return kabupaten;
 	}
 
-	public void setKabupaten(List<KabupatenItem> kabupaten) {
+	public void setKabupaten(ArrayList<KabupatenItem> kabupaten) {
 		this.kabupaten = kabupaten;
 	}
 
-	public List<KelurahanItem> getKelurahan() {
+	public ArrayList<KelurahanItem> getKelurahan() {
 		return kelurahan;
 	}
 
-	public void setKelurahan(List<KelurahanItem> kelurahan) {
+	public void setKelurahan(ArrayList<KelurahanItem> kelurahan) {
 		this.kelurahan = kelurahan;
 	}
 
-	public List<PropinsiItem> getPropinsi() {
+	public ArrayList<PropinsiItem> getPropinsi() {
 		return propinsi;
 	}
 
-	public void setPropinsi(List<PropinsiItem> propinsi) {
+	public void setPropinsi(ArrayList<PropinsiItem> propinsi) {
 		this.propinsi = propinsi;
 	}
 
@@ -212,11 +223,11 @@ public class Employee  implements Parcelable {
 		this.name = name;
 	}
 
-	public List<KecamatanItem> getKecamatan() {
+	public ArrayList<KecamatanItem> getKecamatan() {
 		return kecamatan;
 	}
 
-	public void setKecamatan(List<KecamatanItem> kecamatan) {
+	public void setKecamatan(ArrayList<KecamatanItem> kecamatan) {
 		this.kecamatan = kecamatan;
 	}
 
@@ -226,14 +237,6 @@ public class Employee  implements Parcelable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<ClassroomItem> getClasssroom() {
-		return classsroom;
-	}
-
-	public void setClasssroom(List<ClassroomItem> classsroom) {
-		this.classsroom = classsroom;
 	}
 
 	public String getEmail() {
@@ -253,99 +256,107 @@ public class Employee  implements Parcelable {
 	}
 
 	@Override
+ 	public String toString(){
+		return 
+			"Employee{" +
+			"birthday = '" + birthday + '\'' + 
+			",address = '" + address + '\'' + 
+			",gender = '" + gender + '\'' + 
+			",pass = '" + pass + '\'' + 
+			",propinsi_id = '" + propinsiId + '\'' + 
+			",created_at = '" + createdAt + '\'' + 
+			",classroom = '" + classroom + '\'' + 
+			",avatar = '" + avatar + '\'' + 
+			",kecamatan_id = '" + kecamatanId + '\'' + 
+			",kabupaten = '" + kabupaten + '\'' + 
+			",kelurahan = '" + kelurahan + '\'' + 
+			",propinsi = '" + propinsi + '\'' + 
+			",updated_at = '" + updatedAt + '\'' + 
+			",phone = '" + phone + '\'' + 
+			",user_id = '" + userId + '\'' + 
+			",kelurahan_id = '" + kelurahanId + '\'' + 
+			",kabupaten_id = '" + kabupatenId + '\'' + 
+			",name = '" + name + '\'' + 
+			",kecamatan = '" + kecamatan + '\'' + 
+			",id = '" + id + '\'' + 
+			",email = '" + email + '\'' + 
+			",username = '" + username + '\'' + 
+			"}";
+		}
+
+	@Override
 	public int describeContents() {
 		return 0;
 	}
 
 	@Override
-	public void writeToParcel(Parcel parcel, int i) {
-		parcel.writeString(this.name);
-		parcel.writeString(this.address);
-		parcel.writeString(this.avatar);
-		parcel.writeString(this.birthday);
-		parcel.writeString(this.createdAt);
-		parcel.writeString(this.email);
-		parcel.writeString(this.gender);
-		parcel.writeString(this.pass);
-		parcel.writeString(this.phone);
-		parcel.writeString(this.updatedAt);
-		parcel.writeString(this.username);
-		parcel.writeInt(this.id);
-		parcel.writeInt(this.kabupatenId);
-		parcel.writeInt(this.kecamatanId);
-		parcel.writeInt(this.kelurahanId);
-		parcel.writeInt(this.propinsiId);
-		parcel.writeInt(this.userId);
-		if (kelurahan == null) {
-			parcel.writeByte((byte) (0x00));
-		} else {
-			parcel.writeByte((byte) (0x01));
-			parcel.writeList(kelurahan);
-		}
-		if (classsroom == null) {
-			parcel.writeByte((byte) (0x00));
-		} else {
-			parcel.writeByte((byte) (0x01));
-			parcel.writeList(classsroom);
-		}
-
-
-
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.birthday);
+		dest.writeString(this.address);
+		dest.writeString(this.gender);
+		dest.writeString(this.pass);
+		dest.writeInt(this.propinsiId);
+		dest.writeString(this.createdAt);
+		dest.writeList(this.classroom);
+		dest.writeString(this.avatar);
+		dest.writeInt(this.kecamatanId);
+		dest.writeList(this.kabupaten);
+		dest.writeList(this.kelurahan);
+		dest.writeList(this.propinsi);
+		dest.writeString(this.updatedAt);
+		dest.writeString(this.phone);
+		dest.writeInt(this.userId);
+		dest.writeInt(this.kelurahanId);
+		dest.writeInt(this.kabupatenId);
+		dest.writeString(this.name);
+		dest.writeList(this.kecamatan);
+		dest.writeInt(this.id);
+		dest.writeString(this.email);
+		dest.writeString(this.username);
 	}
 
-	protected Employee(Parcel in)
-	{
-		name = in.readString();
-		if (in.readByte() == 0x01) {
-			kelurahan = new ArrayList<KelurahanItem>();
-			in.readList(kelurahan, String.class.getClassLoader());
-		} else {
-			kelurahan = null;
-		}
-
-		if (in.readByte() == 0x01) {
-			classsroom = new ArrayList<ClassroomItem>();
-			in.readList(classsroom, String.class.getClassLoader());
-		} else {
-			classsroom = null;
-		}
-
+	public Employee() {
 	}
-	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		public Employee createFromParcel(Parcel in) {
-			return new Employee(in);
+
+	protected Employee(Parcel in) {
+		this.birthday = in.readString();
+		this.address = in.readString();
+		this.gender = in.readString();
+		this.pass = in.readString();
+		this.propinsiId = in.readInt();
+		this.createdAt = in.readString();
+		this.classroom = new ArrayList<ClassroomItem>();
+		in.readList(this.classroom, ClassroomItem.class.getClassLoader());
+		this.avatar = in.readString();
+		this.kecamatanId = in.readInt();
+		this.kabupaten = new ArrayList<KabupatenItem>();
+		in.readList(this.kabupaten, KabupatenItem.class.getClassLoader());
+		this.kelurahan = new ArrayList<KelurahanItem>();
+		in.readList(this.kelurahan, KelurahanItem.class.getClassLoader());
+		this.propinsi = new ArrayList<PropinsiItem>();
+		in.readList(this.propinsi, PropinsiItem.class.getClassLoader());
+		this.updatedAt = in.readString();
+		this.phone = in.readString();
+		this.userId = in.readInt();
+		this.kelurahanId = in.readInt();
+		this.kabupatenId = in.readInt();
+		this.name = in.readString();
+		this.kecamatan = new ArrayList<KecamatanItem>();
+		in.readList(this.kecamatan, KecamatanItem.class.getClassLoader());
+		this.id = in.readInt();
+		this.email = in.readString();
+		this.username = in.readString();
+	}
+
+	public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+		@Override
+		public Employee createFromParcel(Parcel source) {
+			return new Employee(source);
 		}
 
+		@Override
 		public Employee[] newArray(int size) {
 			return new Employee[size];
 		}
 	};
-
-	public Employee(){
-
-	}
-	public Employee(String birthday, String address, String gender, String pass, int propinsiId, String createdAt, String avatar, int kecamatanId, List<KabupatenItem> kabupaten, List<KelurahanItem> kelurahan, List<PropinsiItem> propinsi, String updatedAt, String phone, int userId, int kelurahanId, int kabupatenId, String name, List<KecamatanItem> kecamatan, int id, List<ClassroomItem> classsroom, String email, String username) {
-		this.birthday = birthday;
-		this.address = address;
-		this.gender = gender;
-		this.pass = pass;
-		this.propinsiId = propinsiId;
-		this.createdAt = createdAt;
-		this.avatar = avatar;
-		this.kecamatanId = kecamatanId;
-		this.kabupaten = kabupaten;
-		this.kelurahan = kelurahan;
-		this.propinsi = propinsi;
-		this.updatedAt = updatedAt;
-		this.phone = phone;
-		this.userId = userId;
-		this.kelurahanId = kelurahanId;
-		this.kabupatenId = kabupatenId;
-		this.name = name;
-		this.kecamatan = kecamatan;
-		this.id = id;
-		this.classsroom = classsroom;
-		this.email = email;
-		this.username = username;
-	}
 }

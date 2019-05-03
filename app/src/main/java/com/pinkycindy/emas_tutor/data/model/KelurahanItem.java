@@ -1,8 +1,11 @@
 package com.pinkycindy.emas_tutor.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class KelurahanItem{
+public class KelurahanItem implements Parcelable {
 
 	@SerializedName("nama")
 	private String nama;
@@ -34,4 +37,36 @@ public class KelurahanItem{
 			",id = '" + id + '\'' + 
 			"}";
 		}
+
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.nama);
+		dest.writeInt(this.id);
+	}
+
+	public KelurahanItem() {
+	}
+
+	protected KelurahanItem(Parcel in) {
+		this.nama = in.readString();
+		this.id = in.readInt();
+	}
+
+	public static final Creator<KelurahanItem> CREATOR = new Creator<KelurahanItem>() {
+		@Override
+		public KelurahanItem createFromParcel(Parcel source) {
+			return new KelurahanItem(source);
+		}
+
+		@Override
+		public KelurahanItem[] newArray(int size) {
+			return new KelurahanItem[size];
+		}
+	};
 }

@@ -153,7 +153,7 @@ public class ClassroomItem implements Parcelable {
 	@Override
  	public String toString(){
 		return 
-			"ClassroomItem{" +
+			"ClassroomItem{" + 
 			"day_second = '" + daySecond + '\'' + 
 			",spot_id = '" + spotId + '\'' + 
 			",day_first = '" + dayFirst + '\'' + 
@@ -170,28 +170,55 @@ public class ClassroomItem implements Parcelable {
 			"}";
 		}
 
+
 	@Override
 	public int describeContents() {
 		return 0;
 	}
 
 	@Override
-	public void writeToParcel(Parcel parcel, int i) {
-		parcel.writeString(this.name);
-
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(this.daySecond);
+		dest.writeInt(this.spotId);
+		dest.writeInt(this.dayFirst);
+		dest.writeString(this.hourFirst);
+		dest.writeString(this.description);
+		dest.writeString(this.typeClass);
+		dest.writeString(this.createdAt);
+		dest.writeInt(this.capacity);
+		dest.writeString(this.updatedAt);
+		dest.writeInt(this.employeeId);
+		dest.writeString(this.hourSecond);
+		dest.writeString(this.name);
+		dest.writeInt(this.id);
 	}
+
+	public ClassroomItem() {
+	}
+
 	protected ClassroomItem(Parcel in) {
-		name = in.readString();
+		this.daySecond = in.readInt();
+		this.spotId = in.readInt();
+		this.dayFirst = in.readInt();
+		this.hourFirst = in.readString();
+		this.description = in.readString();
+		this.typeClass = in.readString();
+		this.createdAt = in.readString();
+		this.capacity = in.readInt();
+		this.updatedAt = in.readString();
+		this.employeeId = in.readInt();
+		this.hourSecond = in.readString();
+		this.name = in.readString();
+		this.id = in.readInt();
 	}
-	public ClassroomItem(){
 
-	}
-
-	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		public ClassroomItem createFromParcel(Parcel in) {
-			return new ClassroomItem(in);
+	public static final Creator<ClassroomItem> CREATOR = new Creator<ClassroomItem>() {
+		@Override
+		public ClassroomItem createFromParcel(Parcel source) {
+			return new ClassroomItem(source);
 		}
 
+		@Override
 		public ClassroomItem[] newArray(int size) {
 			return new ClassroomItem[size];
 		}

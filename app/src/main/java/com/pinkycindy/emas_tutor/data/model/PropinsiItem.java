@@ -1,8 +1,11 @@
 package com.pinkycindy.emas_tutor.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class PropinsiItem{
+public class PropinsiItem implements Parcelable {
 
 	@SerializedName("nama")
 	private String nama;
@@ -34,4 +37,35 @@ public class PropinsiItem{
 			",id = '" + id + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.nama);
+		dest.writeInt(this.id);
+	}
+
+	public PropinsiItem() {
+	}
+
+	protected PropinsiItem(Parcel in) {
+		this.nama = in.readString();
+		this.id = in.readInt();
+	}
+
+	public static final Creator<PropinsiItem> CREATOR = new Creator<PropinsiItem>() {
+		@Override
+		public PropinsiItem createFromParcel(Parcel source) {
+			return new PropinsiItem(source);
+		}
+
+		@Override
+		public PropinsiItem[] newArray(int size) {
+			return new PropinsiItem[size];
+		}
+	};
 }

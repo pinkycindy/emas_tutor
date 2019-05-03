@@ -99,7 +99,7 @@ public class LoginPresenter implements LoginContract.presenter {
                                 model.setId(jsonRESULTS.getJSONObject("data").getInt("id"));
                                 model.setName(jsonRESULTS.getJSONObject("data").getString("name"));
                                 model.setPropinsi(propinsi);
-                                model.setClasssroom(classroom);
+                                model.setClassroom(classroom);
                                 emp.add(model);
                                 Log.d("Berhasil :",name);
                                 Log.d("id", emp.toString());
