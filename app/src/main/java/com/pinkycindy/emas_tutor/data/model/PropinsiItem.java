@@ -57,7 +57,7 @@ public class PropinsiItem implements Parcelable {
 		this.id = in.readInt();
 	}
 
-	public static final Creator<PropinsiItem> CREATOR = new Creator<PropinsiItem>() {
+	public static final Parcelable.Creator<PropinsiItem> CREATOR = new Parcelable.Creator<PropinsiItem>() {
 		@Override
 		public PropinsiItem createFromParcel(Parcel source) {
 			return new PropinsiItem(source);

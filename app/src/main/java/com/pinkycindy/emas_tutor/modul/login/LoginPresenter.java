@@ -10,10 +10,11 @@ import com.pinkycindy.emas_tutor.data.model.KabupatenItem;
 import com.pinkycindy.emas_tutor.data.model.KecamatanItem;
 import com.pinkycindy.emas_tutor.data.model.KelurahanItem;
 import com.pinkycindy.emas_tutor.data.model.PropinsiItem;
+import com.pinkycindy.emas_tutor.data.source.local.SessionAttendances;
 import com.pinkycindy.emas_tutor.data.source.local.SessionManager;
 import com.pinkycindy.emas_tutor.data.source.remote.ApiConnection;
 import com.pinkycindy.emas_tutor.data.source.remote.ApiInterface;
-import com.pinkycindy.emas_tutor.modul.alarm.AlarmActivity;
+import com.pinkycindy.emas_tutor.modul.reminder.ReminderActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,22 @@ public class LoginPresenter implements LoginContract.presenter {
 
     private LoginContract.view view;
     SessionManager session ;
+    SessionAttendances sessionAttendances;
     Context con;
+
+    Integer id;
+    Integer user_id;
+    Integer prop_id;
+    Integer kab_id;
+    Integer kec_id;
+    Integer kel_id;
+    String name, address, birthday, phone, gender, email, user, avatar;
+    ArrayList<Employee> emp;
+    ArrayList<ClassroomItem> classroom;
+    ArrayList<PropinsiItem> propinsi;
+    ArrayList<KabupatenItem> kabupaten;
+    ArrayList<KecamatanItem> kecamatan;
+    ArrayList<KelurahanItem> kelurahan;
 
 
     public LoginPresenter(LoginContract.view view, Context con) {
@@ -42,6 +58,7 @@ public class LoginPresenter implements LoginContract.presenter {
         this.view = view;
         this.con = con;
         session = new SessionManager(con);
+        sessionAttendances = new SessionAttendances(con);
 
     }
     @Override
@@ -58,21 +75,68 @@ public class LoginPresenter implements LoginContract.presenter {
                         if (response.isSuccessful()){
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                // Jika login berhasil maka data nama yang ada di response API
-                                // akan diparsing ke activity selanjutnya.
-                                String name = jsonRESULTS.getJSONObject("data").getString("name");
-                                String id = jsonRESULTS.getJSONObject("data").getString("id");
-                                String username = jsonRESULTS.getJSONObject("data").getString("username");
-                                String email = jsonRESULTS.getJSONObject("data").getString("email");
 
+                                emp = new ArrayList<Employee>();
+                                propinsi = new ArrayList<PropinsiItem>();
+                                kabupaten = new ArrayList<KabupatenItem>();
+                                kecamatan = new ArrayList<KecamatanItem>();
+                                kelurahan = new ArrayList<KelurahanItem>();
+                                classroom = new ArrayList<ClassroomItem>();
 
-                                ArrayList<Employee> emp = new ArrayList<Employee>();
-                                ArrayList<PropinsiItem> propinsi = new ArrayList<PropinsiItem>();
-                                ArrayList<KabupatenItem> kabupaten = new ArrayList<KabupatenItem>();
-                                ArrayList<KecamatanItem> kecamatan = new ArrayList<KecamatanItem>();
-                                ArrayList<KelurahanItem> kelurahan = new ArrayList<KelurahanItem>();
-                                ArrayList<ClassroomItem> classroom = new ArrayList<ClassroomItem>();
+                                id = jsonRESULTS.getJSONObject("data").getInt("id");
+                                name = jsonRESULTS.getJSONObject("data").getString("name");
+                                address = jsonRESULTS.getJSONObject("data").getString("birthday");
+                                phone = jsonRESULTS.getJSONObject("data").getString("phone");
+                                gender = jsonRESULTS.getJSONObject("data").getString("gender");
+                                user_id = jsonRESULTS.getJSONObject("data").getInt("user_id");
+                                prop_id = jsonRESULTS.getJSONObject("data").getInt("propinsi_id");
+                                kab_id = jsonRESULTS.getJSONObject("data").getInt("kabupaten_id");
+                                kec_id = jsonRESULTS.getJSONObject("data").getInt("kecamatan_id");
+                                kel_id = jsonRESULTS.getJSONObject("data").getInt("kelurahan_id");
+                                user = jsonRESULTS.getJSONObject("data").getString("username");
+                                email = jsonRESULTS.getJSONObject("data").getString("email");
+                                avatar = jsonRESULTS.getJSONObject("data").getString("avatar");
 
+                                JSONArray jsProp = jsonRESULTS.getJSONObject("data").getJSONArray("propinsi");
+                                int len_jsProp = jsProp.length();
+                                for (int i=0; i<len_jsProp; i++){
+                                    JSONObject jsonProp = jsProp.getJSONObject(i);
+                                    PropinsiItem propinsiItem = new PropinsiItem();
+                                    propinsiItem.setId(jsonProp.getInt("id"));
+                                    propinsiItem.setNama(jsonProp.getString("nama"));
+                                    propinsi.add(propinsiItem);
+
+                                }
+                                JSONArray jsKab = jsonRESULTS.getJSONObject("data").getJSONArray("kabupaten");
+                                int len_jsKab = jsKab.length();
+                                for (int i=0; i<len_jsKab; i++){
+                                    JSONObject jsonKab = jsKab.getJSONObject(i);
+                                    KabupatenItem kabupatenItem = new KabupatenItem();
+                                    kabupatenItem.setId(jsonKab.getInt("id"));
+                                    kabupatenItem.setNama(jsonKab.getString("nama"));
+                                    kabupaten.add(kabupatenItem);
+
+                                }
+                                JSONArray jsKec = jsonRESULTS.getJSONObject("data").getJSONArray("kecamatan");
+                                int len_jsKec = jsKec.length();
+                                for (int i=0; i<len_jsKec; i++){
+                                    JSONObject jsonKec = jsKec.getJSONObject(i);
+                                    KecamatanItem kecamatanItem = new KecamatanItem();
+                                    kecamatanItem.setId(jsonKec.getInt("id"));
+                                    kecamatanItem.setNama(jsonKec.getString("nama"));
+                                    kecamatan.add(kecamatanItem);
+
+                                }
+                                JSONArray jsKel = jsonRESULTS.getJSONObject("data").getJSONArray("kelurahan");
+                                int len_jsKel = jsKel.length();
+                                for (int i=0; i<len_jsKel; i++){
+                                    JSONObject jsonKel = jsKel.getJSONObject(i);
+                                    KelurahanItem kelurahanItem = new KelurahanItem();
+                                    kelurahanItem.setId(jsonKel.getInt("id"));
+                                    kelurahanItem.setNama(jsonKel.getString("nama"));
+                                    kelurahan.add(kelurahanItem);
+
+                                }
                                 JSONArray ja = jsonRESULTS.getJSONObject("data").getJSONArray("classroom");
                                 int len = ja.length();
                                 for(int j=0; j<len; j++)
@@ -86,28 +150,47 @@ public class LoginPresenter implements LoginContract.presenter {
                                     modelClass.setDescription(json.getString("description"));
                                     modelClass.setDayFirst(json.getInt("day_first"));
                                     modelClass.setHourFirst(json.getString("hour_first"));
-                                    modelClass.setDaySecond(json.getInt("day_second"));
                                     modelClass.setHourSecond(json.getString("hour_second"));
                                     modelClass.setTypeClass(json.getString("type_class"));
-                                    modelClass.setCapacity(json.getInt("capacity"));
+                                  //  modelClass.setCapacity(json.getInt("capacity"));
+                                    modelClass.setNameSpots(json.getString("name_spots"));
+                                    modelClass.setAddress(json.getString("address"));
+                                    modelClass.setLat(json.getDouble("lat"));
+                                    modelClass.setLng(json.getDouble("lng"));
                                     classroom.add(modelClass);
                                     Log.d("p",json.getString("id").toString());
                                 }
 
 
                                 Employee model = new Employee();
-                                model.setId(jsonRESULTS.getJSONObject("data").getInt("id"));
-                                model.setName(jsonRESULTS.getJSONObject("data").getString("name"));
+                                model.setId(id);
+                                model.setName(name);
+                                model.setAddress(address);
+                                model.setBirthday(birthday);
+                                model.setPhone(phone);
+                                model.setGender(gender);
+                                model.setUserId(user_id);
+                                model.setPropinsiId(prop_id);
+                                model.setKabupatenId(kab_id);
+                                model.setKecamatanId(kec_id);
+                                model.setKelurahanId(kel_id);
+                                model.setEmail(email);
+                                model.setUsername(user);
+                                model.setAvatar(avatar);
                                 model.setPropinsi(propinsi);
+                                model.setKabupaten(kabupaten);
+                                model.setKecamatan(kecamatan);
+                                model.setKelurahan(kelurahan);
                                 model.setClassroom(classroom);
                                 emp.add(model);
                                 Log.d("Berhasil :",name);
                                 Log.d("id", emp.toString());
 
-                                session.createLoginSession(id, name, username, email);
+                                session.createLoginSession(String.valueOf(id), name, user, email);
+                                sessionAttendances.createSessionAttendances("0","0" , "0","0");
                                 view.hideProgressbar();
 
-                                Intent intent = new Intent(con, AlarmActivity.class);
+                                Intent intent = new Intent(con, ReminderActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.putExtra("emp", emp);
                                 con.startActivity(intent);

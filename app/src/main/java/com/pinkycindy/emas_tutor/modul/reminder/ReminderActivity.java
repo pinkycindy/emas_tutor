@@ -1,11 +1,10 @@
-package com.pinkycindy.emas_tutor.modul.alarm;
+package com.pinkycindy.emas_tutor.modul.reminder;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.pinkycindy.emas_tutor.Base.BaseActivity;
 import com.pinkycindy.emas_tutor.data.model.ClassroomItem;
@@ -17,18 +16,19 @@ import java.util.ArrayList;
 /**
  * Created by Pinky Cindy
  */
-public class AlarmActivity extends BaseActivity implements AlarmContract.view {
+public class ReminderActivity extends BaseActivity implements ReminderContract.view {
+
 
 
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
 
-    private AlarmContract.presenter presenter;
+    private ReminderContract.presenter presenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_main);
-        presenter = new AlarmPresenter(this, getApplicationContext());
+        presenter = new ReminderPresenter(this, getApplicationContext());
 
 
         Intent intent = getIntent();
@@ -37,12 +37,11 @@ public class AlarmActivity extends BaseActivity implements AlarmContract.view {
 
         ArrayList<ClassroomItem> clssemp =  (ArrayList<ClassroomItem>) data_emp.get(0).getClassroom();
         int lenght = clssemp.size();
-
         presenter.createalarm(clssemp);
         //cek data
 
         String name = data_emp.get(0).getName();
-        Log.d("namaa", String.valueOf(lenght));
+        //Log.d("namaa", String.valueOf(lenght));
 
 
 
@@ -55,14 +54,14 @@ public class AlarmActivity extends BaseActivity implements AlarmContract.view {
     }
 
 //    private void setAlarm() {
-//        Intent intent = new Intent(AlarmActivity.this, AlarmReceiver.class);
+//        Intent intent = new Intent(ReminderActivity.this, ReminderReceiver.class);
 //        pendingIntent = PendingIntent.getBroadcast(
-//                AlarmActivity.this, 234324243, intent, 0);
+//                ReminderActivity.this, 234324243, intent, 0);
 //        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 //
 //        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
 //                + (15 * 1000), pendingIntent);
-//        Toast.makeText(AlarmActivity.this, "Alarm set in " + 15 + " seconds",Toast.LENGTH_LONG).show();
+//        Toast.makeText(ReminderActivity.this, "Alarm set in " + 15 + " seconds",Toast.LENGTH_LONG).show();
 //    }
 
     @Override

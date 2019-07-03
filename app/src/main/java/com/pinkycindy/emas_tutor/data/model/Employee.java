@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+
 public class Employee implements Parcelable {
 
 	@SerializedName("birthday")
@@ -75,184 +76,180 @@ public class Employee implements Parcelable {
 	@SerializedName("username")
 	private String username;
 
-	public static Creator<Employee> getCREATOR() {
-		return CREATOR;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
+	public void setBirthday(String birthday){
 		this.birthday = birthday;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getBirthday(){
+		return birthday;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(String address){
 		this.address = address;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getAddress(){
+		return address;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(String gender){
 		this.gender = gender;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getGender(){
+		return gender;
 	}
 
-	public void setPass(String pass) {
+	public void setPass(String pass){
 		this.pass = pass;
 	}
 
-	public int getPropinsiId() {
-		return propinsiId;
+	public String getPass(){
+		return pass;
 	}
 
-	public void setPropinsiId(int propinsiId) {
+	public void setPropinsiId(int propinsiId){
 		this.propinsiId = propinsiId;
 	}
 
-	public String getCreatedAt() {
-		return createdAt;
+	public int getPropinsiId(){
+		return propinsiId;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(String createdAt){
 		this.createdAt = createdAt;
 	}
 
-	public ArrayList<ClassroomItem> getClassroom() {
-		return classroom;
+	public String getCreatedAt(){
+		return createdAt;
 	}
 
-	public void setClassroom(ArrayList<ClassroomItem> classroom) {
+	public void setClassroom(ArrayList<ClassroomItem> classroom){
 		this.classroom = classroom;
 	}
 
-	public String getAvatar() {
-		return avatar;
+	public ArrayList<ClassroomItem> getClassroom(){
+		return classroom;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(String avatar){
 		this.avatar = avatar;
 	}
 
-	public int getKecamatanId() {
-		return kecamatanId;
+	public String getAvatar(){
+		return avatar;
 	}
 
-	public void setKecamatanId(int kecamatanId) {
+	public void setKecamatanId(int kecamatanId){
 		this.kecamatanId = kecamatanId;
 	}
 
-	public ArrayList<KabupatenItem> getKabupaten() {
-		return kabupaten;
+	public int getKecamatanId(){
+		return kecamatanId;
 	}
 
-	public void setKabupaten(ArrayList<KabupatenItem> kabupaten) {
+	public void setKabupaten(ArrayList<KabupatenItem> kabupaten){
 		this.kabupaten = kabupaten;
 	}
 
-	public ArrayList<KelurahanItem> getKelurahan() {
-		return kelurahan;
+	public ArrayList<KabupatenItem> getKabupaten(){
+		return kabupaten;
 	}
 
-	public void setKelurahan(ArrayList<KelurahanItem> kelurahan) {
+	public void setKelurahan(ArrayList<KelurahanItem> kelurahan){
 		this.kelurahan = kelurahan;
 	}
 
-	public ArrayList<PropinsiItem> getPropinsi() {
-		return propinsi;
+	public ArrayList<KelurahanItem> getKelurahan(){
+		return kelurahan;
 	}
 
-	public void setPropinsi(ArrayList<PropinsiItem> propinsi) {
+	public void setPropinsi(ArrayList<PropinsiItem> propinsi){
 		this.propinsi = propinsi;
 	}
 
-	public String getUpdatedAt() {
-		return updatedAt;
+	public ArrayList<PropinsiItem> getPropinsi(){
+		return propinsi;
 	}
 
-	public void setUpdatedAt(String updatedAt) {
+	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getUpdatedAt(){
+		return updatedAt;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone){
 		this.phone = phone;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getPhone(){
+		return phone;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(int userId){
 		this.userId = userId;
 	}
 
-	public int getKelurahanId() {
-		return kelurahanId;
+	public int getUserId(){
+		return userId;
 	}
 
-	public void setKelurahanId(int kelurahanId) {
+	public void setKelurahanId(int kelurahanId){
 		this.kelurahanId = kelurahanId;
 	}
 
-	public int getKabupatenId() {
-		return kabupatenId;
+	public int getKelurahanId(){
+		return kelurahanId;
 	}
 
-	public void setKabupatenId(int kabupatenId) {
+	public void setKabupatenId(int kabupatenId){
 		this.kabupatenId = kabupatenId;
 	}
 
-	public String getName() {
-		return name;
+	public int getKabupatenId(){
+		return kabupatenId;
 	}
 
-	public void setName(String name) {
+	public void setName(String name){
 		this.name = name;
 	}
 
-	public ArrayList<KecamatanItem> getKecamatan() {
-		return kecamatan;
+	public String getName(){
+		return name;
 	}
 
-	public void setKecamatan(ArrayList<KecamatanItem> kecamatan) {
+	public void setKecamatan(ArrayList<KecamatanItem> kecamatan){
 		this.kecamatan = kecamatan;
 	}
 
-	public int getId() {
-		return id;
+	public ArrayList<KecamatanItem> getKecamatan(){
+		return kecamatan;
 	}
 
-	public void setId(int id) {
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public int getId(){
+		return id;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email){
 		this.email = email;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail(){
+		return email;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(String username){
 		this.username = username;
+	}
+
+	public String getUsername(){
+		return username;
 	}
 
 	@Override
@@ -348,7 +345,7 @@ public class Employee implements Parcelable {
 		this.username = in.readString();
 	}
 
-	public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+	public static final Parcelable.Creator<Employee> CREATOR = new Parcelable.Creator<Employee>() {
 		@Override
 		public Employee createFromParcel(Parcel source) {
 			return new Employee(source);

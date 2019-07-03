@@ -38,7 +38,6 @@ public class KecamatanItem implements Parcelable {
 			"}";
 		}
 
-
 	@Override
 	public int describeContents() {
 		return 0;
@@ -58,7 +57,7 @@ public class KecamatanItem implements Parcelable {
 		this.id = in.readInt();
 	}
 
-	public static final Creator<KecamatanItem> CREATOR = new Creator<KecamatanItem>() {
+	public static final Parcelable.Creator<KecamatanItem> CREATOR = new Parcelable.Creator<KecamatanItem>() {
 		@Override
 		public KecamatanItem createFromParcel(Parcel source) {
 			return new KecamatanItem(source);

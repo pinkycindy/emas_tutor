@@ -1,4 +1,4 @@
-package com.pinkycindy.emas_tutor.modul.alarm;
+package com.pinkycindy.emas_tutor.modul.reminder;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;

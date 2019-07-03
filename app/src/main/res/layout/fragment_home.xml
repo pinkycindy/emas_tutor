@@ -5,136 +5,199 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white2">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:background="@color/white"
             >
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_cloud"
-                    android:layout_gravity="center_vertical"
-                    android:padding="5dp"/>
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center_vertical"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="5dp"
-                    android:text="WELCOME BACK!"/>
+                    android:textStyle="bold"
+                    android:text="Welcome Tutor! "/>
         </LinearLayout>
-        <View android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#bbb"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/conten"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-
+            android:layout_marginTop="20px"
+            android:background="@color/white">
                 <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="120dp"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_margin="15dp"
-                    android:padding="15dp"
-                    android:background="#309bec">
+                    android:padding="15dp">
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_fingerprint"
-                            android:layout_gravity="center"/>
+                            android:id="@+id/iv_upload"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:src="@drawable/ic_attendance"
+                            android:layout_gravity="center_horizontal"/>
+
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Attendances"
-                            android:textColor="#FFF"
-                            android:textSize="18dp"
-                            android:gravity="center"/>
+                            android:layout_gravity="center_horizontal"
+                            android:text="Upload Material"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textSize="13dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                        <ImageView
+                            android:id="@+id/iv_statistic"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_statistic"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Statistic"
+                            android:textColor="@color/black"
+                            android:textSize="13dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="120dp"
-                    android:orientation="vertical"
-                    android:layout_margin="15dp"
-                    android:padding="15dp"
-                    android:background="#309bec">
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+                <ImageView
+                    android:id="@+id/iv_classroom"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_classroom"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Unoccupied Classroom"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="13dp" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:layout_marginTop="20px"
+            android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10px"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="Attendances Status :"/>
+                <LinearLayout
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:background="@color/yellow"
+                    android:layout_margin="10dp">
                         <ImageView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_history"
-                            android:layout_gravity="center"/>
-                        <TextView
+                            android:src="@drawable/ic_down"
+                            android:layout_margin="20dp"
+                            android:layout_gravity="center_vertical"/>
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="History"
-                            android:textColor="#FFF"
-                            android:textSize="18dp"
-                            android:gravity="center"/>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                                <TextView
+                                    android:id="@+id/attendances_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textSize="13dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="CHECK IN : -"
+                                    android:textSize="13dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="LOCATION : -"
+                                    android:textSize="13dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"/>
+                        </LinearLayout>
+
 
                 </LinearLayout>
+
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_marginTop="20px">
 
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="120dp"
-                    android:orientation="vertical"
-                    android:layout_margin="15dp"
-                    android:padding="15dp"
-                    android:background="#309bec">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_multiline_chart"
-                            android:layout_gravity="center"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Graphic"
-                            android:textColor="#FFF"
-                            android:textSize="18dp"
-                            android:gravity="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10px"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="My Schedule Today :"/>
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="120dp"
-                    android:orientation="vertical"
-                    android:layout_margin="15dp"
-                    android:padding="15dp"
-                    android:background="#309bec">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_map"
-                            android:layout_gravity="center"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Spots"
-                            android:textColor="#FFF"
-                            android:textSize="18dp"
-                            android:gravity="center"/>
 
-                </LinearLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:visibility="visible"/>
+
 
         </LinearLayout>
+
 
 
 

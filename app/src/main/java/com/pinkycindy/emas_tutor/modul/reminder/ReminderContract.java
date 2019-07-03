@@ -1,4 +1,4 @@
-package com.pinkycindy.emas_tutor.modul.alarm;
+package com.pinkycindy.emas_tutor.modul.reminder;
 
 import com.pinkycindy.emas_tutor.data.model.ClassroomItem;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Pinky Cindy
  */
-public interface AlarmContract {
+public interface ReminderContract {
 
     interface view{
         void showWindow();

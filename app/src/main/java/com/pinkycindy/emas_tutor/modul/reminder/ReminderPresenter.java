@@ -1,4 +1,4 @@
-package com.pinkycindy.emas_tutor.modul.alarm;
+package com.pinkycindy.emas_tutor.modul.reminder;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -17,20 +17,20 @@ import static android.content.Context.ALARM_SERVICE;
 /**
  * Created by Pinky Cindy
  */
-public class AlarmPresenter implements AlarmContract.presenter{
+public class ReminderPresenter implements ReminderContract.presenter{
 
-    private AlarmContract.view view;
+    private ReminderContract.view view;
     SessionManager session ;
     Context con;
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
 
 
-
-    public AlarmPresenter(AlarmContract.view view, Context con) {
+    public ReminderPresenter(ReminderContract.view view, Context con) {
         this.view = view;
         this.con = con;
     }
+
 
     @Override
     public void createalarm(ArrayList<ClassroomItem> classsroom) {
@@ -46,15 +46,23 @@ public class AlarmPresenter implements AlarmContract.presenter{
             String[] kata = hour1.split(":");
             String jam1 = kata[0];
             String menit1 = kata[1];
-            intents[i] = new Intent(con,AlarmReceiver.class);
+            int spotid = classsroom.get(i).getSpotId();
+            intents[i] = new Intent(con, ReminderReceiver.class);
+            intents[i].putExtra("id",classsroom.get(i).getId());
+            intents[i].putExtra("spot_id", classsroom.get(i).getSpotId());
+            Log.d("spot", String.valueOf(spotid));
+            intents[i].putExtra("lat", classsroom.get(i).getLat());
+            intents[i].putExtra("lng", classsroom.get(i).getLng());
+//            intents[i].putExtra("Alarm_no", i);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(con,i,intents[i],0);
             Calendar cal=Calendar.getInstance();
             cal.set(Calendar.DAY_OF_WEEK, day1);
-            cal.set(Calendar.HOUR_OF_DAY, 11);
-            cal.set(Calendar.MINUTE, 40);
+            cal.set(Calendar.HOUR_OF_DAY, 6);
+            cal.set(Calendar.MINUTE, 54);
             cal.set(Calendar.SECOND, 0);
+            //reminder 10 menit sebelum jadwal
 
-            Log.d("cal lama", cal.getTime().toString());
+          //  Log.d("cal lama", cal.getTime().toString());
             if(cal.getTimeInMillis() < System.currentTimeMillis()) {
                 cal.add(Calendar.DAY_OF_YEAR, 7);
             }
@@ -72,7 +80,7 @@ public class AlarmPresenter implements AlarmContract.presenter{
 //            String jam2 = kata2[0];
 //            String menit2 = kata2[1];
 //
-//            intents[i] = new Intent(con,AlarmReceiver.class);
+//            intents[i] = new Intent(con,ReminderReceiver.class);
 //            PendingIntent pendingIntent = PendingIntent.getBroadcast(con,i,intents[i],PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
 //            Calendar cal=Calendar.getInstance();
 //            cal.set(Calendar.DAY_OF_WEEK, day2);
@@ -87,7 +95,7 @@ public class AlarmPresenter implements AlarmContract.presenter{
 
 
 
-//        Intent intent = new Intent(con, AlarmReceiver.class);
+//        Intent intent = new Intent(con, ReminderReceiver.class);
 //        pendingIntent = PendingIntent.getBroadcast(
 //                con, 234324243, intent, 0);
 //        alarmManager = (AlarmManager) con.getSystemService(ALARM_SERVICE);

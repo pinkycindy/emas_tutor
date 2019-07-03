@@ -4,30 +4,56 @@
     package="com.pinkycindy.emas_tutor">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:debuggable="true"
         android:theme="@style/AppThemeNoActionBar"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".modul.login.LoginActivity">
+        <service
+            android:name=".modul.service.CloseAttendancesService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".modul.service.AttendancesService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".modul.splashscreen.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modul.MainActivity"></activity>
-        <activity android:name=".modul.alarm.AlarmActivity"></activity>
-        <activity android:name=".modul.alarm.WindowActivity"></activity>
-        <receiver android:name=".modul.alarm.AlarmReceiver" ></receiver>
+        <activity
+            android:name=".modul.login.LoginActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".modul.MainActivity"
+            android:theme="@style/AppTheme"
+           />
+        <activity android:name=".modul.classroom.ClassroomActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".modul.report.ReportActivity"
+            android:theme="@style/AppTheme"></activity>
 
+        <activity android:name=".modul.uploadModul.UploadModulActivity"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity android:name=".modul.reminder.ReminderActivity" />
+        <activity android:name=".modul.attendances.AttendancesActivity" />
+        <activity android:name=".modul.reminder.WindowActivity" />
+
+        <receiver android:name=".modul.reminder.ReminderReceiver" />
+        <receiver android:name=".modul.service.AttendancesReceiver" />
+        <receiver android:name=".modul.service.CloseAttendancesReceiver"></receiver>
     </application>
 
 </manifest>
