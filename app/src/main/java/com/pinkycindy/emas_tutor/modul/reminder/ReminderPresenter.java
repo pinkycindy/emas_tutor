@@ -57,8 +57,8 @@ public class ReminderPresenter implements ReminderContract.presenter{
             PendingIntent pendingIntent = PendingIntent.getBroadcast(con,i,intents[i],0);
             Calendar cal=Calendar.getInstance();
             cal.set(Calendar.DAY_OF_WEEK, day1);
-            cal.set(Calendar.HOUR_OF_DAY, 6);
-            cal.set(Calendar.MINUTE, 54);
+            cal.set(Calendar.HOUR_OF_DAY, 8);
+            cal.set(Calendar.MINUTE, 14);
             cal.set(Calendar.SECOND, 0);
             //reminder 10 menit sebelum jadwal
 

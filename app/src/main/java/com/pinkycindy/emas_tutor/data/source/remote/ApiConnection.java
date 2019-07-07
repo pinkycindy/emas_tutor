@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiConnection {
 
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.1.25/emas/public/api/";
+    private static final String BASE_URL = "http://202.154.58.68:8080/api/";
 
     public static ApiInterface getClient(){
         if(retrofit == null){
